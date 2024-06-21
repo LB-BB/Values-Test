@@ -5,7 +5,24 @@ import { BrowserRouter } from 'react-router-dom'
 import Round1 from './Round1'
 import { questions } from './questions'
 
+// Mock useNavigate
+const mockNavigate = jest.fn()
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}))
+
+// Mock the questions data
+jest.mock('./questions', () => ({
+  questions: [
+    'TOLERANCE: to accept and respect those who differ from me',
+    'VIRTUE: to live a morally pure and excellent life',
+    'WORLD PEACE: to work to promote peace in the world'
+  ],
+}))
+ 
 describe('Round1 Component', () => {
+
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear()
@@ -88,5 +105,26 @@ describe('Round1 Component', () => {
 
     // Ensure localStorage is updated
     expect(localStorage.getItem('importance')).toContain('"very important"')
+  })
+  
+  test('handleSubmit sends the user to Round2 with appropriate questions in state', () => {  
+    render(
+      <BrowserRouter>
+        <Round1 />
+      </BrowserRouter>
+    )
+  
+    // Simulate changes to importance
+    fireEvent.click(screen.getAllByLabelText('Not Important')[0]) // Set question 1 to 'Not Important'
+    fireEvent.click(screen.getAllByLabelText('Not Important')[1]) // Set question 2 to 'Not Important'
+  
+    // Simulate the submit button click
+    const submitButton = screen.getByText('Submit & Go to Round 2')
+    fireEvent.click(submitButton)
+  
+    // Assert that navigate was called with the correct arguments
+    expect(mockNavigate).toHaveBeenCalledWith('/round2', {
+      state: { importantQuestions: ["WORLD PEACE: to work to promote peace in the world"] }, // Only the questions marked as 'very important' should be included
+    })
   })
 })
