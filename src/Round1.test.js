@@ -22,7 +22,6 @@ jest.mock('./questions', () => ({
 }))
  
 describe('Round1 Component', () => {
-
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear()

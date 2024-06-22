@@ -16,8 +16,9 @@ const Round1 = () => {
   }, [importance])
 
   const clear = () => {
+    localStorage.clear()
     setImportance(Array(questions.length).fill('very important'))
-    localStorage.setItem('importance', JSON.stringify(importance))
+    localStorage.setItem('importance', JSON.stringify(importance));
     navigate('/')
   }
 
@@ -31,7 +32,7 @@ const Round1 = () => {
 
   const handleSubmit = () => {
     const importantQuestions = questions.filter((_, index) => importance[index] === 'very important')
-    console.log(importantQuestions)
+    navigate('/round2', { state: { importantQuestions } })
   }
 
   return (
