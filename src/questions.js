@@ -29,9 +29,6 @@ export const questions = [
   "CREATIVITY: to create new things or ideas","DEPENDABILITY: to be reliable and trustworthy",
   "DUTY: to carry out my duties and obligations",
   "EXCITEMENT: to have a life full of thrills and stimulation",
-]
-
-const questionsCont = [
   "FAME: to be known and recognized",
   "FAMILY: to have a happy, loving family",
   "FITNESS: to be physically fit and strong",
