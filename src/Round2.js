@@ -46,7 +46,7 @@ const Round2 = () => {
         {importantQuestions.map((question, index) => (
           <li key={index}>
             <span>{`${index +1}: `}{question}</span>
-            <div className='radio-buttons'>
+            <div>
               <input
                 type='radio'
                 id={`very-important-${index}`}

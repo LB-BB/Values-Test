@@ -2,9 +2,6 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { BrowserRouter, useNavigate, useLocation } from 'react-router-dom'
 import Round2 from './Round2'
-import { questions } from './questions'
-
-const importantQuestions = questions.slice(0, 12)
 
 // Mock useNavigate
 const mockNavigate = jest.fn()
@@ -14,18 +11,18 @@ jest.mock('react-router-dom', () => ({
   useLocation: () => ({
     state: {
       importantQuestions: [
-        "ACCEPTANCE: to be accepted as I am",
-        "ACCURACY: to be correct in my opinions and beliefs",
-        "ACHIEVEMENT: to have important accomplishments",
-        "ADVENTURE: to have new and exciting experiences",
-        "ART: to appreciate or express myself in art",
-        "AUTHORITY: to be in charge of others",
-        "BEAUTY: to appreciate beauty around me",
-        "ACCURACY: to be correct in my opinions and beliefs",
-        "ADVENTURE: to have new and exciting experieces",
-        "ATTRACTIVENESS: to be physically attractive",
-        "AUTONOMY: to be self-determined and independent",
-        "BELONGING: to have a sense of belonging, being part of",
+        "Question 1",
+        "Question 2",
+        "Question 3",
+        "Question 4",
+        "Question 5",
+        "Question 6",
+        "Question 7",
+        "Question 8",
+        "Question 9",
+        "Question 10",
+        "Question 11",
+        "Question 12",
       ],
       importance: Array(12).fill('very important')
     }
@@ -46,9 +43,9 @@ describe('Round2 Component', () => {
 
     expect(screen.getByText('Round 2')).toBeInTheDocument()
     expect(screen.getByText('Mark the questions as \'very important\' or \'most important\'. You may select only 10 \'most important\' questions.')).toBeInTheDocument()
-    expect(screen.getByText(`1: ${importantQuestions[0]}`)).toBeInTheDocument()
-    expect(screen.getByText(`6: ${importantQuestions[5]}`)).toBeInTheDocument()
-    expect(screen.getByText(`12: ${importantQuestions[11]}`)).toBeInTheDocument()
+    expect(screen.getByText('1: Question 1')).toBeInTheDocument()
+    expect(screen.getByText('6: Question 6')).toBeInTheDocument()
+    expect(screen.getByText('12: Question 12')).toBeInTheDocument()
   })
 
   test('changes importance of a question', () => {
@@ -96,7 +93,7 @@ describe('Round2 Component', () => {
     fireEvent.click(submitButton)
 
     expect(mockNavigate).toHaveBeenCalledWith('/round3', {
-      state: { mostImportantQuestions: [importantQuestions[0]] },
+      state: { mostImportantQuestions: ['Question 1'] },
     })
   })
 })

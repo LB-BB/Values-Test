@@ -17,8 +17,9 @@ const Round1 = () => {
 
   const clear = () => {
     localStorage.clear()
-    setImportance(Array(questions.length).fill('very important'))
-    localStorage.setItem('importance', JSON.stringify(importance));
+    const newImportance = Array(questions.length).fill('very important')
+    setImportance(newImportance)
+    localStorage.setItem('importance', JSON.stringify(newImportance))
     navigate('/')
   }
 

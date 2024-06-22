@@ -15,9 +15,9 @@ jest.mock('react-router-dom', () => ({
 // Mock the questions data
 jest.mock('./questions', () => ({
   questions: [
-    'TOLERANCE: to accept and respect those who differ from me',
-    'VIRTUE: to live a morally pure and excellent life',
-    'WORLD PEACE: to work to promote peace in the world'
+    'Question 1',
+    'Question 2',
+    'Question 3'
   ],
 }))
  
@@ -123,7 +123,7 @@ describe('Round1 Component', () => {
   
     // Assert that navigate was called with the correct arguments
     expect(mockNavigate).toHaveBeenCalledWith('/round2', {
-      state: { importantQuestions: ["WORLD PEACE: to work to promote peace in the world"] }, // Only the questions marked as 'very important' should be included
+      state: { importantQuestions: ['Question 3'] }, // Only the questions marked as 'very important' should be included
     })
   })
 })
