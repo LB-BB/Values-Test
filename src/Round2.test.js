@@ -43,9 +43,9 @@ describe('Round2 Component', () => {
 
     expect(screen.getByText('Round 2')).toBeInTheDocument()
     expect(screen.getByText('Mark the questions as \'very important\' or \'most important\'. You may select only 10 \'most important\' questions.')).toBeInTheDocument()
-    expect(screen.getByText('1: Question 1')).toBeInTheDocument()
-    expect(screen.getByText('6: Question 6')).toBeInTheDocument()
-    expect(screen.getByText('12: Question 12')).toBeInTheDocument()
+    expect(screen.getByText('1. Question 1')).toBeInTheDocument()
+    expect(screen.getByText('6. Question 6')).toBeInTheDocument()
+    expect(screen.getByText('12. Question 12')).toBeInTheDocument()
   })
 
   test('changes importance of a question', () => {

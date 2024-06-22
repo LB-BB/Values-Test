@@ -35,7 +35,7 @@ describe('Round1 Component', () => {
     )
 
     questions.forEach((question, index) => {
-      expect(screen.getByText(`${index + 1}: ${question}`)).toBeInTheDocument()
+      expect(screen.getByText(`${index + 1}. ${question}`)).toBeInTheDocument()
 
       const notImportantRadioButtons = screen.getAllByLabelText('Not Important')
       const somewhatImportantRadioButtons = screen.getAllByLabelText('Somewhat Important')
