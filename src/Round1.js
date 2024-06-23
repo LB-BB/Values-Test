@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { questions } from './questions'
 import { useNavigate } from 'react-router-dom'
+import './styles.css'
 
 const Round1 = () => {
   const navigate = useNavigate()
@@ -55,19 +56,20 @@ const Round1 = () => {
   const currentQuestions = questions.slice(startIndex, startIndex + questionsPerPage)
 
   return (
-    <div>
+    <div className='container'>
       <div>
-        <div>
-          <h1>Round 1: 102 Values</h1>
-          <h3>Page {currentPage + 1} of {totalPages}</h3>
+        <div className='page-title-container'>
+          <h1 className='page-title'>Round 1: 102 Values</h1>
+          <h3>Rank these values from "Not Important" to "Very Important".</h3>
+          <h4>Page {currentPage + 1} of {totalPages}</h4>
         </div>
       </div>
       <div>
         <ul>
           {currentQuestions.map((question, index) => (
-            <li key={startIndex + index}>
-              <span>{`${startIndex + index + 1}. `}{question}</span>
-              <div>
+            <li key={startIndex + index} className='question-container'>
+              <span className='question-text'>{`${startIndex + index + 1}. `}{question}</span>
+              <div className='radio-buttons'>
                 <input
                   type='radio'
                   id={`not-important-${startIndex + index}`}
@@ -109,13 +111,21 @@ const Round1 = () => {
           ))}
         </ul>
       </div>
-      <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages - 1}>Next</button>
-      </div>
-      <div>
-        <button onClick={clear}>Clear & Restart</button>
-        <button onClick={handleSubmit}>Submit & Go to Round 2</button>
+      <div className='button-container'>
+        <div className='clear-button-container'>
+          <button className='page-button' onClick={clear}>Clear & Restart</button>
+        </div>
+        <div className='nav-button-container'>
+        {currentPage > 0 && (
+            <button className='page-button' onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
+          )}
+          {currentPage < totalPages - 1 && (
+            <button className='page-button' onClick={handleNextPage} disabled={currentPage === totalPages - 1}>Next</button>
+          )}
+          {currentPage === totalPages - 1 && (
+            <button className='page-button' onClick={handleSubmit}>Submit & Go to Round 2</button>
+          )}
+        </div>
       </div>
     </div>
   )

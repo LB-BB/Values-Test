@@ -80,3 +80,110 @@
   height: 600px; 
   width: 1000px; 
 }
+
+/* CSS for the question pages */
+
+/* Container for the title section */
+.page-title-container {
+  background-color: rgba(255, 193, 21, 0.8); /* Solid gold background */
+  color: white; /* White text */
+  padding: 20px 60px; /* Padding for the text */
+  border-radius: 0 0 150px 0; /* Curved bottom-right corner */
+  display: inline-block; /* Keep the section width to fit content */
+  margin-left: -25px; /* Align the left side of the container with the edge of the screen */
+  margin-top: -30px; /* Align the top with the top of the screen */
+  border-right: 10px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 10px solid rgba(255, 230, 161, 0.3);
+}
+
+
+.page-title {
+  font-size: 2em; /* Increase font size */
+  font-weight: bold; /* Make text bold */
+  margin: 0; /* Remove default margin */
+}
+
+.container {
+  padding: 30px 0px 10px;
+  background-color: rgb(19, 111, 118);
+  min-height: 100vh;
+}
+
+.question-container {
+  background-color: rgba(255, 253, 243, 0.5); /* Translucent cream background */
+  border-radius: 10px; /* Rounded edges */
+  padding: 20px; /* Padding inside the container */
+  margin: 10px 30px; /* Margin between containers */
+  
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between question text and radio buttons */
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+  unicode-bidi: isolate;
+}
+
+.question-text {
+  flex: 1; /* Take up remaining space */
+}
+
+.radio-buttons {
+  display: flex; /* Flexbox layout for radio buttons */
+  gap: 10px; /* Space between radio buttons */
+}
+/* General button styling */
+
+/* Container for buttons to add additional space if needed */
+.button-container {
+  background-color: rgb(19, 111, 118);
+  display: flex;
+  justify-content: space-between; /* Align buttons to both sides */
+  flex-wrap: wrap; /* Wrap buttons if they don't fit in one line */
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 30px;
+}
+
+/* Container for the clear button */
+.clear-button-container {
+  display: flex;
+  justify-content: flex-start; /* Align clear button to the left side */
+}
+
+/* Container for navigation buttons */
+.nav-button-container {
+  display: flex;
+  justify-content: flex-end; /* Align navigation buttons to the right side */
+  gap: 10px; /* Space between buttons */
+}
+
+.page-button {
+  background-color: rgba(255, 193, 21, 0.6); /* Blue background */
+  color: rgb(255, 253, 243);
+  font-size: 20px; /* Increase text size */
+  padding: 10px 20px; /* Padding for better appearance */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Rounded edges */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 10px 5px; /* Space between buttons */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Button hover effect */
+.page-button:hover {
+  background-color: rgba(255, 193, 21, 0.8); /* Brighter gold on hover */
+}
+
+/* Button focus outline */
+.page-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Custom focus outline */
+}

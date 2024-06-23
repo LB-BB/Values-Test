@@ -38,15 +38,18 @@ const Round2 = () => {
   }
 
   return (
-    <div>
-      <h1>Round 2</h1>
-      <p>Mark the questions as 'very important' or 'most important'. You may select only 10 'most important' questions.</p>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className='container'>
+      <div className='page-title-container'>
+        <h1 className='page-title'>Round 2</h1>
+        <h3>Mark the questions as "Very Important" or "Most Important".</h3> 
+        <h4>You may select only 10 "Most Important" questions.</h4>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
       <ul>
         {importantQuestions.map((question, index) => (
-          <li key={index}>
-            <span>{`${index +1}. `}{question}</span>
-            <div>
+          <li key={index} className='question-container'>
+            <span className='question-text'>{`${index +1}. `}{question}</span>
+            <div className='radio-buttons'>
               <input
                 type='radio'
                 id={`very-important-${index}`}
@@ -69,11 +72,15 @@ const Round2 = () => {
           </li>
         ))}
       </ul>
-      <div>
-        <button>
-        <Link to='/round1'>Return to Round 1</Link>
-        </button>
-        <button onClick={handleSubmit}>Submit & Go to Round 3</button>
+      <div className='button-container'>
+        <div className='clear-button-container'>
+          <button className='page-button'>
+          <Link to='/round1'>Return to Round 1</Link>
+          </button>
+        </div>
+        <div className='nav-button-container'>
+          <button className='page-button' onClick={handleSubmit}>Submit & Go to Round 3</button>
+        </div>
       </div>
     </div>
   )
