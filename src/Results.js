@@ -14,18 +14,24 @@ const Results = () => {
 
   return (
     <div>
-      <h1>Your Values, Ranked</h1>
-      <div>
-        <ul>
-          {rankedQuestions.map((item, index) => (
-            <li key={index}>
-              <span>{index + 1}. {item}</span>
-            </li>
-          ))}
-        </ul>
-        <div>
-          <button onClick={handleReturnToRound3}><Link to='/round3'>Return to Round 3</Link></button>
-          <button ><Link to='/round1'>Start from Round 1</Link></button>
+      <div className='half-circle-container'>
+        <div className='half-circle'>
+          <h1>Your Values, Ranked</h1>
+        </div>
+      </div>
+      <div className='container'>
+        <div className='results-container'>
+          <ul className="result-list">
+            {rankedQuestions.map((item, index) => (
+              <li key={index} className="result-item">
+                <span className="result-text">{index + 1}. {item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className='button-container'>
+          <button className='page-button' onClick={handleReturnToRound3}><Link to='/round3'>Return to Round 3</Link></button>
+          <button className='page-button'><Link to='/round1'>Return to Round 1</Link></button>
         </div>
       </div>
     </div>

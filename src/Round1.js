@@ -9,9 +9,9 @@ const Round1 = () => {
   const questionsPerPage = 8 // Number of questions per page
   const totalPages = Math.ceil(questions.length / questionsPerPage)
   const [importance, setImportance] = useState(() => {
-    // Initialize the importance state with 'very important' for all questions
+    // Initialize the importance state with 'not important' for all questions
     const savedImportance = localStorage.getItem('importance')
-    return savedImportance ? JSON.parse(savedImportance) : Array(questions.length).fill('very important')
+    return savedImportance ? JSON.parse(savedImportance) : Array(questions.length).fill('not important')
   })
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Round1 = () => {
 
   const clear = () => {
     localStorage.clear()
-    const newImportance = Array(questions.length).fill('very important')
+    const newImportance = Array(questions.length).fill('not important')
     setImportance(newImportance)
     localStorage.setItem('importance', JSON.stringify(newImportance))
     navigate('/')
@@ -57,12 +57,10 @@ const Round1 = () => {
 
   return (
     <div className='container'>
-      <div>
-        <div className='page-title-container'>
-          <h1 className='page-title'>Round 1: 102 Values</h1>
-          <h3>Rank these values from "Not Important" to "Very Important".</h3>
-          <h4>Page {currentPage + 1} of {totalPages}</h4>
-        </div>
+      <div className='page-title-container'>
+        <h1 className='page-title'>Round 1: 102 Values</h1>
+        <h3>Rank these values from "Not Important" to "Very Important".</h3>
+        <h4>Page {currentPage + 1} of {totalPages}</h4>
       </div>
       <div>
         <ul>

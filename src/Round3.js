@@ -31,24 +31,27 @@ const Round3 = () => {
   }
 
   return (
-    <div>
-      <h1>Round 3</h1>
-      <p>Rank the questions from most to least important:</p>
+    <div className='container'>
+      <div className='page-title-container'>
+        <h1 className='page-title'>Round 3</h1>
+        <h3>Rank these values from most to least important.</h3>
+      </div>
       <ul>
         {rankedQuestions.map((question, index) => (
-          <li key={index}>
-            <div>
-            <span>
-              {question}</span>
+          <li key={index} className='question-container'>
+            <div className='question-content'>
+              <span>{question}</span>
+            </div>
+            <div className='move-buttons'>
               <button onClick={() => moveUp(index)} disabled={index === 0}>▲</button>
               <button onClick={() => moveDown(index)} disabled={index === rankedQuestions.length - 1}>▼</button>
             </div>
           </li>
         ))}
       </ul>
-      <div>
-        <button onClick={handleReturnToRound2}><Link to='/round2'>Return to Round 2</Link></button>
-        <button onClick={handleSubmit}>Submit Rankings</button>
+      <div className='button-container'>
+        <button className='page-button' onClick={handleReturnToRound2}><Link to='/round2'>Return to Round 2</Link></button>
+        <button className='page-button' onClick={handleSubmit}>Submit Rankings</button>
       </div>
     </div>
   )

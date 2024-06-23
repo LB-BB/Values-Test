@@ -18,48 +18,47 @@
 }
 
 /* Style the start button */
+
 .start-button {
   width: 200px;
   height: 200px;
   font-size: 30px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 193, 21, 0.6);
-  border: 3px solid rgb(255, 193, 21, 1);
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 193, 21, 0.6);
+  border: 3px solid rgba(255, 193, 21, 1);
   border-radius: 50%; /* Full circle */
   cursor: pointer;
   text-align: center;
   position: relative; /* For ripple effect */
-  /* overflow: hidden;  */
-  /* For ripple effect */
-  margin: 0px auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center; 
+  overflow: visible;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-/* Ripple effect */
-.start-button::after {
+/* Use ::before for the expanding/shrinking effect */
+.start-button::before {
   content: '';
-  display: block;
   position: absolute;
-  width: 2500px; 
-  height: 2500px;
-  top: 50%;
-  left: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 193, 21) 10%, transparent 0.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: transform 0.5s, opacity 1s;
+  width: 0;
+  height: 0;
+  background-color: rgba(254, 223, 139, 0.4);
+  border-radius: 50%; /* Full circle */
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 0; /* Ensure it is behind the text */
 }
 
-.start-button:hover::after {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0.2;
-  transition: 0.5s;
+.start-button:hover::before {
+  width: 170%;
+  height: 170%;
+}
+
+.start-button span {
+  position: relative; /* Ensure the text is above the pseudo-element */
+  z-index: 1;
 }
 
 /* Home container styles */
@@ -93,9 +92,8 @@
   margin-left: -25px; /* Align the left side of the container with the edge of the screen */
   margin-top: -30px; /* Align the top with the top of the screen */
   border-right: 10px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 10px solid rgba(255, 230, 161, 0.3);
+  border-bottom: 10px solid rgba(255, 255, 255, 0.3);
 }
-
 
 .page-title {
   font-size: 2em; /* Increase font size */
@@ -113,8 +111,7 @@
   background-color: rgba(255, 253, 243, 0.5); /* Translucent cream background */
   border-radius: 10px; /* Rounded edges */
   padding: 20px; /* Padding inside the container */
-  margin: 10px 30px; /* Margin between containers */
-  
+  margin: 10px 50px;
   display: flex; /* Flexbox layout */
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space between question text and radio buttons */
@@ -139,6 +136,7 @@ ul {
   display: flex; /* Flexbox layout for radio buttons */
   gap: 10px; /* Space between radio buttons */
 }
+
 /* General button styling */
 
 /* Container for buttons to add additional space if needed */
@@ -166,10 +164,10 @@ ul {
 }
 
 .page-button {
-  background-color: rgba(255, 193, 21, 0.6); /* Blue background */
+  background-color: rgba(255, 193, 21, 0.6);
   color: rgb(255, 253, 243);
   font-size: 20px; /* Increase text size */
-  padding: 10px 20px; /* Padding for better appearance */
+  padding: 10px 20px; 
   border: none; /* Remove default border */
   border-radius: 10px; /* Rounded edges */
   cursor: pointer; /* Pointer cursor on hover */
@@ -182,8 +180,66 @@ ul {
   background-color: rgba(255, 193, 21, 0.8); /* Brighter gold on hover */
 }
 
-/* Button focus outline */
-.page-button:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Custom focus outline */
+/* Container for Round 3 question text and buttons */
+.question-content {
+  display: flex;
+  justify-content: space-between; /* Space between text and buttons */
+  align-items: center; /* Center align items vertically */
+  padding: 10px 0; /* Padding for better appearance */
+}
+
+/* Move buttons container */
+.move-buttons {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+}
+
+/* Styling for the results page */
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 253, 243, 0.6); /* Translucent cream background */
+  border-radius: 10px; /* Rounded edges */
+  padding: 20px; /* Padding for content */
+  margin: 0px 150px 20px;
+}
+
+.result-item {
+  list-style-type: none; /* Remove default list styles */
+}
+
+.result-text {
+  font-size: 22px; /* Larger text size */
+  font-weight: bold; /* Bold text */
+}
+
+.half-circle-container {
+  display: flex;
+  align-items: right;
+  background-color: rgb(19, 111, 118);
+}
+
+.half-circle {
+  width: 100%;
+  height: 220px; /* Adjust the height to control the size of the half-circle */
+  background-color: rgba(207, 156, 16, 0.9);
+  border-bottom-left-radius: 90% 400px;
+  border-bottom-right-radius: 90% 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  border-right: 10px solid rgba(255, 255, 255, 0.3);
+  border-left: 10px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 10px solid rgba(255, 230, 161, 0.3);
+}
+
+.half-circle h1 {
+  color: white;
+  font-size: 3rem; /* Adjust the font size as needed */
+  margin: 0;
 }
