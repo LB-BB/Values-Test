@@ -32,7 +32,7 @@ describe('Round3 Component', () => {
 
   test('renders the component correctly with initial questions', () => {
     expect(screen.getByText('Round 3')).toBeInTheDocument()
-    expect(screen.getByText('Rank the questions from most to least important:')).toBeInTheDocument()
+    expect(screen.getByText('Rank these values from most to least important.')).toBeInTheDocument()
     expect(screen.getByText('Question 1')).toBeInTheDocument()
     expect(screen.getByText('Question 2')).toBeInTheDocument()
     expect(screen.getByText('Question 3')).toBeInTheDocument()

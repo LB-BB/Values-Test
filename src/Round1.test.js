@@ -20,7 +20,7 @@ jest.mock('./questions', () => ({
     'Question 3'
   ],
 }))
- 
+
 describe('Round1 Component', () => {
   beforeEach(() => {
     // Clear localStorage before each test
@@ -49,7 +49,7 @@ describe('Round1 Component', () => {
     })
   })
 
-  test('initializes all radio buttons with "very important" checked', () => {
+  test('initializes all radio buttons with "Not Important" checked', () => {
     render(
       <BrowserRouter>
         <Round1 />
@@ -57,8 +57,8 @@ describe('Round1 Component', () => {
     )
 
     questions.forEach((_, index) => {
-      const veryImportantRadioButtons = screen.getAllByLabelText('Very Important')
-      expect(veryImportantRadioButtons[index]).toBeChecked()
+      const notImportantRadioButtons = screen.getAllByLabelText('Not Important')
+      expect(notImportantRadioButtons[index]).toBeChecked()
     })
   })
 
@@ -69,12 +69,12 @@ describe('Round1 Component', () => {
       </BrowserRouter>
     )
 
-    const radio = screen.getByLabelText('Not Important', { selector: `input[name="importance-0"]` })
+    const radio = screen.getByLabelText('Somewhat Important', { selector: `input[name="importance-0"]` })
     act(() => {
       fireEvent.click(radio)
     })
 
-    expect(localStorage.getItem('importance')).toContain('"not important"')
+    expect(localStorage.getItem('importance')).toContain('"somewhat important"')
   })
 
   test('handles the "Clear & Restart" button', () => {
@@ -85,7 +85,7 @@ describe('Round1 Component', () => {
     )
 
     // Change a radio button
-    const radio = screen.getByLabelText('Not Important', { selector: `input[name="importance-0"]` })
+    const radio = screen.getByLabelText('Somewhat Important', { selector: `input[name="importance-0"]` })
     act(() => {
       fireEvent.click(radio)
     })
@@ -96,34 +96,34 @@ describe('Round1 Component', () => {
       fireEvent.click(button)
     })
 
-    // Check if all radio buttons are reset to "very important"
+    // Check if all radio buttons are reset to "Not Important"
     questions.forEach((_, index) => {
-      const radio = screen.getByLabelText('Very Important', { selector: `input[name="importance-${index}"]` })
+      const radio = screen.getByLabelText('Not Important', { selector: `input[name="importance-${index}"]` })
       expect(radio).toBeChecked()
     })
 
     // Ensure localStorage is updated
-    expect(localStorage.getItem('importance')).toContain('"very important"')
+    expect(localStorage.getItem('importance')).toContain('"not important"')
   })
-  
-  test('handleSubmit sends the user to Round2 with appropriate questions in state', () => {  
+
+  test('handleSubmit sends the user to Round2 with appropriate questions in state', () => {
     render(
       <BrowserRouter>
         <Round1 />
       </BrowserRouter>
     )
-  
+
     // Simulate changes to importance
-    fireEvent.click(screen.getAllByLabelText('Not Important')[0]) // Set question 1 to 'Not Important'
-    fireEvent.click(screen.getAllByLabelText('Not Important')[1]) // Set question 2 to 'Not Important'
-  
+    fireEvent.click(screen.getAllByLabelText('Very Important')[0]) // Set question 1 to 'Very Important'
+    fireEvent.click(screen.getAllByLabelText('Very Important')[1]) // Set question 2 to 'Very Important'
+
     // Simulate the submit button click
     const submitButton = screen.getByText('Submit & Go to Round 2')
     fireEvent.click(submitButton)
-  
+
     // Assert that navigate was called with the correct arguments
     expect(mockNavigate).toHaveBeenCalledWith('/round2', {
-      state: { importantQuestions: ['Question 3'] }, // Only the questions marked as 'very important' should be included
+      state: { importantQuestions: ['Question 1', 'Question 2'] }, // Only the questions marked as 'very important' should be included
     })
   })
 })

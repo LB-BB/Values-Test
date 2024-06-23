@@ -32,7 +32,7 @@ describe('Results Component', () => {
     renderWithRouter(<Results />)
 
     expect(screen.getByText('Return to Round 3')).toBeInTheDocument()
-    expect(screen.getByText('Start from Round 1')).toBeInTheDocument()
+    expect(screen.getByText('Return to Round 1')).toBeInTheDocument()
   })
 
   test('navigates to Round 3 with ranked questions state', () => {
@@ -62,7 +62,7 @@ describe('Results Component', () => {
       </MemoryRouter>
     )
 
-    fireEvent.click(screen.getByText('Start from Round 1'))
+    fireEvent.click(screen.getByText('Return to Round 1'))
 
     expect(screen.getByText('Round 1: 102 Values')).toBeInTheDocument()
   })
