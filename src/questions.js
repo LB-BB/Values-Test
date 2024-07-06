@@ -99,3 +99,4 @@ export const questions = [
   "VIRTUE: to live a morally pure and excellent life",
   "WORLD PEACE: to work to promote peace in the world"
 ]
+console.log(questions.length)

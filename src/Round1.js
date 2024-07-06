@@ -6,7 +6,7 @@ import './styles.css'
 const Round1 = () => {
   const navigate = useNavigate()
   const [currentPage, setCurrentPage] = useState(0)
-  const questionsPerPage = 8 // Number of questions per page
+  const questionsPerPage = 10 // Number of questions per page
   const totalPages = Math.ceil(questions.length / questionsPerPage)
   const [importance, setImportance] = useState(() => {
     // Initialize the importance state with 'not important' for all questions
@@ -58,7 +58,7 @@ const Round1 = () => {
   return (
     <div className='container'>
       <div className='page-title-container'>
-        <h1 className='page-title'>Round 1: 102 Values</h1>
+        <h1 className='page-title'>Round 1: 100 Values</h1>
         <h3>Rank these values from "Not Important" to "Very Important".</h3>
         <h4>Page {currentPage + 1} of {totalPages}</h4>
       </div>
