@@ -4,20 +4,20 @@
 .title {
   text-align: center;
   margin-top: 50px;
-  font-size: 50px;
+  font-size: 5vw;
   font-weight: bold;
 }
 .subtitle {
   text-align: center;
   margin-top: 40px;
   font-weight: bold;
-}
-
-.subtitle-2 {
-  padding-bottom: 70px;
+  font-size: 2.5vw;
 }
 
 /* Style the start button */
+.start-button-container {
+  padding: 5% 0%;
+}
 
 .start-button {
   width: 150px;
@@ -65,19 +65,20 @@
 .home-container {
   background-color: rgb(19, 111, 118);
   min-height: 100vh;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 .start-container {
   background-color: rgba(255, 253, 243, 0.5); 
   border-radius: 20px; 
   padding: 20px; 
-  height: 600px; 
-  width: 1000px; 
+  height: 75%; 
+  width: 90%; 
 }
 
 /* CSS for the question pages */
@@ -86,11 +87,13 @@
 .page-title-container {
   background-color: rgba(255, 193, 21, 0.8); /* Solid gold background */
   color: white; /* White text */
-  padding: 20px 60px; /* Padding for the text */
+  padding: 20px 60px; /* Adjust padding if necessary */
   border-radius: 0 0 150px 0; /* Curved bottom-right corner */
-  display: inline-block; /* Keep the section width to fit content */
-  margin-left: -25px; /* Align the left side of the container with the edge of the screen */
-  margin-top: -30px; /* Align the top with the top of the screen */
+  display: inline-block; /* May need to change to block if using full width */
+  margin-left: 0; /* Ensure it's flush with the left side */
+  margin-top: -30px; /* Ensure it's flush with the top side */
+  width: 100%; /* Take full width to avoid any space on the sides */
+  box-sizing: border-box; /* Include padding in the width calculation */
   border-right: 10px solid rgba(255, 255, 255, 0.3);
   border-bottom: 10px solid rgba(255, 255, 255, 0.3);
 }
@@ -113,6 +116,7 @@
   padding: 20px; /* Padding inside the container */
   margin: 10px 50px;
   display: flex; /* Flexbox layout */
+  flex-wrap: wrap;
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space between question text and radio buttons */
 }
@@ -130,11 +134,13 @@ ul {
 
 .question-text {
   flex: 1; /* Take up remaining space */
+  flex-wrap: wrap;
 }
 
 .radio-buttons {
   display: flex; /* Flexbox layout for radio buttons */
   gap: 10px; /* Space between radio buttons */
+  flex-wrap: wrap;
 }
 
 /* General button styling */
@@ -154,11 +160,13 @@ ul {
 .clear-button-container {
   display: flex;
   justify-content: flex-start; /* Align clear button to the left side */
+  flex-wrap: wrap;
 }
 
 /* Container for navigation buttons */
 .nav-button-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end; /* Align navigation buttons to the right side */
   gap: 10px; /* Space between buttons */
 }
@@ -183,6 +191,7 @@ ul {
 /* Container for Round 3 question text and buttons */
 .question-content {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between; /* Space between text and buttons */
   align-items: center; /* Center align items vertically */
   padding: 10px 0; /* Padding for better appearance */
@@ -191,17 +200,18 @@ ul {
 /* Move buttons container */
 .move-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px; /* Space between buttons */
 }
 
 /* Styling for the results page */
-
 .results-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 253, 243, 0.6); /* Translucent cream background */
+  background-color: rgba(255, 253, 243, 0.6);
   border-radius: 10px; /* Rounded edges */
   padding: 20px; /* Padding for content */
   margin: 0px 150px 20px;
@@ -240,6 +250,51 @@ ul {
 
 .half-circle h1 {
   color: white;
-  font-size: 3rem; /* Adjust the font size as needed */
+  font-size: 5vw; /* Adjust the font size as needed */
   margin: 0;
+}
+
+/* Styling for different sizes of page */
+@media (max-width: 800px) {
+  .page-title-container, .start-container {
+    width: auto; /* Allow full width on smaller screens */
+    margin: 10px; /* Less margin on smaller screens */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .page-title-container {
+    padding: 15px 30px; /* Reduce padding on smaller screens */
+    border-right: 5px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 5px solid rgba(255, 255, 255, 0.3);
+    margin-top: -30px;
+    margin-left: -10px;
+  }
+
+  .question-container, .results-container {
+    margin: 10px; /* Adjust margins for smaller devices */
+    padding: 10px; /* Adjust padding for smaller devices */
+  }
+
+  .start-button-container {
+    padding: 10% 0%;
+  }
+
+  .start-button {
+    width: 100px; /* Smaller button on mobile */
+    height: 100px;
+    font-size: 20px;
+  }
+  
+  .question-text, .radio-buttons {
+    font-size: smaller;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.button-container .page-button {
+  padding: 12px 24px; /* Larger padding for easier interaction on touch devices */
 }
