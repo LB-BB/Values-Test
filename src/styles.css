@@ -9,7 +9,7 @@
 }
 .subtitle {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 4%;
   font-weight: bold;
   font-size: 2.5vw;
 }
@@ -234,7 +234,7 @@ ul {
 
 .half-circle {
   width: 100%;
-  height: 220px; /* Adjust the height to control the size of the half-circle */
+  height: 15vw; /* Adjust the height to control the size of the half-circle */
   background-color: rgba(207, 156, 16, 0.9);
   border-bottom-left-radius: 90% 400px;
   border-bottom-right-radius: 90% 400px;
@@ -255,7 +255,7 @@ ul {
 }
 
 /* Styling for different sizes of page */
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .page-title-container, .start-container {
     width: auto; /* Allow full width on smaller screens */
     margin: 10px; /* Less margin on smaller screens */
@@ -288,13 +288,26 @@ ul {
   .question-text, .radio-buttons {
     font-size: smaller;
   }
+
+  .radio-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+  }
+
+  .nav-button-container, .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align navigation buttons to the right side */
+    gap: 10px; /* Space between buttons */
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .button-container .page-button {
+    padding: 12px 24px; /* Larger padding for easier interaction on touch devices */
+  }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.button-container .page-button {
-  padding: 12px 24px; /* Larger padding for easier interaction on touch devices */
-}
